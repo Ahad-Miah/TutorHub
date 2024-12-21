@@ -7,6 +7,7 @@ import MyTutorials from "../Pages/MyTutorials";
 import MyBookedTutors from "../Pages/MyBookedTutors";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import Details from "../Pages/Details";
 
 
 
@@ -23,6 +24,10 @@ const Router =createBrowserRouter([
             {
                 path:"findTutors/:category",
                 element:<FindTutors></FindTutors>
+            },
+            {
+                path:"details",
+                element:<Details></Details>
             },
             {
                 path:"addTutorials",

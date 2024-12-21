@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const tutors = [
     {
@@ -71,9 +72,12 @@ const FindTutors = () => {
               </div>
               <p className="text-gray-700 text-sm mb-4">{tutor.details}</p>
               <div className="badge badge-secondary mb-4">Price:$200</div>
+              <Link to={`/details`}>
               <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
                 View Details
               </button>
+              </Link>
+              
             </div>
           </div>
         ))}
