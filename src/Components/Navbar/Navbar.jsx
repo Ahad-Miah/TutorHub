@@ -66,7 +66,7 @@ const Navbar = () => {
                     <Link to="/" className="text-3xl font-extrabold text-white">
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">Tutor<span className="text-white">Hub</span></span>
                     </Link>
-                    <div className="md:hidden">
+                    <div className="lg:hidden">
                         <button
                             onClick={toggleMenu}
                             className="text-white focus:outline-none hover:text-yellow-400"
@@ -76,13 +76,13 @@ const Navbar = () => {
                             }
                         </button>
                     </div>
-                    <ul className="hidden md:flex space-x-8">
+                    <ul className="hidden lg:flex space-x-8">
                         {links}
                     </ul>
                 </div>
             </div>
             {isOpen && (
-                <div className="md:hidden bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white">
+                <div className="lg:hidden bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white">
                     <ul className="flex flex-col items-center space-y-4 py-4">
                        {links}
                     </ul>
