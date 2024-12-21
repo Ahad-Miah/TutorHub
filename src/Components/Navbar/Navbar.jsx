@@ -10,7 +10,7 @@ const Navbar = () => {
 // all navlink
     const links = <>
         <li><NavLink to="/" className="text-lg text-white hover:text-yellow-400">Home</NavLink></li>
-        <li><NavLink to="/findTutors" className="text-lg text-white hover:text-yellow-400">Find Tutors</NavLink></li>
+        <li><NavLink to="/findTutors/all" className="text-lg text-white hover:text-yellow-400">Find Tutors</NavLink></li>
         <li><NavLink to="/addTutorials" className="text-lg text-white hover:text-yellow-400">Add Tutorials</NavLink></li>
         <li><NavLink to="/myTutorials" className="text-lg text-white hover:text-yellow-400">My Tutorials</NavLink></li>
         <li><NavLink to="/myBookedTutors" className="text-lg text-white hover:text-yellow-400">My Booked Tutors</NavLink></li>
