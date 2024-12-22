@@ -21,7 +21,7 @@ const Router =createBrowserRouter([
                 element:<Home></Home>
             },
             {
-                path:"findTutors/:category",
+                path:"findTutors/:language",
                 element:<FindTutors></FindTutors>
             },
             {

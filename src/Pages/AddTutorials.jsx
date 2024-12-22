@@ -27,7 +27,7 @@ const AddTutorials = () => {
             review
         }
         console.log(tutorInfo);
-        axios.post(`http://localhost:5000/tutorials`,tutorInfo)
+        axios.post(`${import.meta.env.VITE_apiUrl}tutorials`,tutorInfo)
         .then(result=>{
             console.log(result.data)
             if(result.data.insertedId){
