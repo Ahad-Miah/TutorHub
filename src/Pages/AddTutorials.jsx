@@ -29,7 +29,6 @@ const AddTutorials = () => {
         console.log(tutorInfo);
         axios.post(`${import.meta.env.VITE_apiUrl}tutorials`,tutorInfo)
         .then(result=>{
-            console.log(result.data)
             if(result.data.insertedId){
                 form.reset();
                 toast.success("Added Successfully");

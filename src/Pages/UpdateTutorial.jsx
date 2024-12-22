@@ -31,9 +31,8 @@ const UpdateTutorial = () => {
         console.log(tutorInfo);
         axios.put(`${import.meta.env.VITE_apiUrl}tutorials/${updateData._id}`,tutorInfo)
         .then(result=>{
-            console.log(result.data)
+            form.reset();
             if(result.data.acknowledged){
-                form.reset();
                 toast.success("Updated Successfully");
             }
         });

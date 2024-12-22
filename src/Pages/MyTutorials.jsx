@@ -4,6 +4,7 @@ import { LiaEditSolid } from "react-icons/lia";
 import axios from 'axios';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyTutorials = () => {
 
@@ -16,6 +17,33 @@ const MyTutorials = () => {
     const getMyTutorials=async()=>{
         const {data}=await axios.get(`${import.meta.env.VITE_apiUrl}myTutorials/${user.email}`)
         setMyTutorial(data);
+    }
+
+    const handleDelete=(id)=>{
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`${import.meta.env.VITE_apiUrl}tutorials/${id}`)
+           .then(result=>{
+            if(result.data.deletedCount){
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                  });
+                  getMyTutorials();
+               }
+           }); 
+        }
+      
+      });
     }
     return (
         <section className="py-20 px-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
@@ -59,7 +87,7 @@ const MyTutorials = () => {
                     <td className="py-4 px-6 flex justify-center space-x-4">
                       <button
                         className="bg-red-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-red-600 focus:ring-2 focus:ring-red-400 transition"
-                        onClick={() => handleDelete(tutorial.id)} 
+                        onClick={() => handleDelete(tutorial._id)} 
                       >
                         <MdDeleteForever />
                       </button>
