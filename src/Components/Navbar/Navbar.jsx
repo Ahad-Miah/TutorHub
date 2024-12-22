@@ -25,7 +25,8 @@ const Navbar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                     <img
-                        alt="Tailwind CSS Navbar component"
+                        referrerPolicy='no-referrer'
+                        alt={user?.displayName}
                         src={user?.photoURL} />
                 </div>
             </div>
@@ -44,9 +45,13 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to="/" className="text-lg text-white hover:text-yellow-400">Home</NavLink></li>
         <li><NavLink to="/findTutors/all" className="text-lg text-white hover:text-yellow-400">Find Tutors</NavLink></li>
-        <li><NavLink to="/addTutorials" className="text-lg text-white hover:text-yellow-400">Add Tutorials</NavLink></li>
+       {
+        user &&<>
+         <li><NavLink to="/addTutorials" className="text-lg text-white hover:text-yellow-400">Add Tutorials</NavLink></li>
         <li><NavLink to="/myTutorials" className="text-lg text-white hover:text-yellow-400">My Tutorials</NavLink></li>
         <li><NavLink to="/myBookedTutors" className="text-lg text-white hover:text-yellow-400">My Booked Tutors</NavLink></li>
+        </>
+       }
         <li className='flex justify-center items-center gap-3'>
 
             {loading ?  <span className="loading loading-ring loading-lg"></span>

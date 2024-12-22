@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
 
-    const {login,setLoading}=useContext(AuthContext);
+    const {login,setLoading,googleLogin}=useContext(AuthContext);
     const navigate=useNavigate();
     const location=useLocation();
 
@@ -28,6 +28,15 @@ const Login = () => {
             setLoading(false);
            toast.error("Error !Invalid Email or Password!");
           });
+    }
+
+    // google login
+    const handleGoogleLogin=()=>{
+        googleLogin()
+        .then(res=>{
+            navigate(location?.state ?location.state:"/");
+        })
+        .catch(err=>console.log(err));
     }
 
     return (
@@ -86,7 +95,7 @@ const Login = () => {
                 </form>
                 {/* Google Login Button */}
                 <div className="mt-6">
-                    <button
+                    <button onClick={handleGoogleLogin}
                         className="w-full flex items-center justify-center py-2 px-4 border gap-2 border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-purple-700 hover:text-white"
                     >
                         <FaGoogle />
