@@ -8,7 +8,8 @@ const Navbar = () => {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-    const {name}=useContext(AuthContext);
+    const {signout,user}=useContext(AuthContext);
+    console.log(user);
 // all navlink
     const links = <>
         <li><NavLink to="/" className="text-lg text-white hover:text-yellow-400">Home</NavLink></li>
@@ -17,12 +18,20 @@ const Navbar = () => {
         <li><NavLink to="/myTutorials" className="text-lg text-white hover:text-yellow-400">My Tutorials</NavLink></li>
         <li><NavLink to="/myBookedTutors" className="text-lg text-white hover:text-yellow-400">My Booked Tutors</NavLink></li>
         <li>
-            <Link
+            {
+                user?<button
+                onClick={signout}
+                to="login"
+                className="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-500"
+            >
+                Log Out
+            </button>:<Link
                 to="login"
                 className="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-500"
             >
                 Sign Up
             </Link>
+            }  
         </li>
     </>
 // hamburger icon

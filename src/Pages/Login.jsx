@@ -1,10 +1,35 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGoogle } from "react-icons/fa";
 import loginAnimation from '../assets/Lottiefiles/login.json'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+
+    const {login,setLoading}=useContext(AuthContext);
+    const navigate=useNavigate();
+    const location=useLocation();
+
+    const handleLogin=(e)=>{
+        e.preventDefault();
+        const form=e.target;
+        const email=form.email.value;
+        const password=form.password.value;
+
+        login(email,password)
+        .then(res => {
+            e.target.reset();
+            toast.success("Logged in! Congratulations!");
+            navigate(location?.state ?location.state:"/");
+          })
+          .catch(err => {
+            setLoading(false);
+           toast.error("Error !Invalid Email or Password!");
+          });
+    }
+
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 flex justify-center items-center px-5 md:px-0">
             <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md my-10">
@@ -15,7 +40,7 @@ const Login = () => {
                     </div>
                     <h2 className="text-2xl font-bold mb-6 text-gray-700">Login to Your Account</h2>
                 </div>
-                <form className="space-y-6">
+                <form onSubmit={handleLogin} className="space-y-6">
                     {/* Email Field */}
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
