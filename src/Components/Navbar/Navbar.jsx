@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +8,7 @@ const Navbar = () => {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+    const {name}=useContext(AuthContext);
 // all navlink
     const links = <>
         <li><NavLink to="/" className="text-lg text-white hover:text-yellow-400">Home</NavLink></li>

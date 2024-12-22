@@ -1,10 +1,42 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import registerAnimation from '../assets/Lottiefiles/register.json'
+import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
+
+    const {register,handleUpdateProfile}=useContext(AuthContext);
+    const navigate=useNavigate();
+
+    const handleSubmit=(e)=>{
+            e.preventDefault();
+            const form=e.target;
+            const name=form.name.value;
+            const photo=form.photo.value;
+            const email=form.email.value;
+            const password=form.password.value;
+            const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+
+            if(!passwordRegex.test(password)){
+                toast.warning("Password length Should be  Six and at least one uppercase and one lowercase letter !");
+                return;
+            }
+
+            register(email,password)
+            .then(res=>{
+                handleUpdateProfile(name,photo)
+                .then(res=>{
+                toast.success("Registration successful")
+                  navigate(location?.state ?location.state:"/");
+                //   window.location.reload();
+                })
+                
+            })
+            .catch(err =>console.log("err",err));
+    }
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 flex justify-center items-center px-5 md:px-0">
         <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md my-10">
@@ -15,7 +47,7 @@ const Register = () => {
                 </div>
                 <h2 className="text-2xl font-bold mb-6 text-gray-700">Register a new Account</h2>
             </div>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
                 {/* name field */}
                 <div>
                     <label  className="block text-sm font-medium text-gray-700">
@@ -23,8 +55,8 @@ const Register = () => {
                     </label>
                     <input
                         type="text"
-                        id="email"
-                        name="email"
+                        id="name"
+                        name="name"
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                         placeholder="Enter your name"
                         required
@@ -37,8 +69,8 @@ const Register = () => {
                     </label>
                     <input
                         type="text"
-                        id="email"
-                        name="email"
+                        id="photo"
+                        name="photo"
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                         placeholder="Enter your photoUrl"
                         required
