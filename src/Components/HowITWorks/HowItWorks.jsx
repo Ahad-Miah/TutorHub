@@ -65,10 +65,10 @@ const HowItWorks = () => {
             className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-white to-purple-400 rounded-full opacity-20 transform -translate-x-20 -translate-y-20"
             aria-hidden="true"
           ></div>
-          <div
-            className="hidden md:block absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-br from-pink-400 to-red-500 rounded-full opacity-20 transform translate-x-20 translate-y-20"
+          {/* <div
+            className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-br from-pink-400 to-red-500 rounded-full opacity-20 transform -translate-x-20 translate-y-20"
             aria-hidden="true"
-          ></div>
+          ></div> */}
         </div>
       </section>
       

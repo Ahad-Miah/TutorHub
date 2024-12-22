@@ -8,68 +8,98 @@ const Navbar = () => {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-    const {signout,user}=useContext(AuthContext);
-    console.log(user);
-// all navlink
+    const { signout, user, loading } = useContext(AuthContext);
+    console.log(user)
+    // user profile
+    const profile = <>
+        <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                    <img
+                        alt="Tailwind CSS Navbar component"
+                        src={user?.photoURL} />
+                </div>
+            </div>
+            <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                <li>
+                    <a className="justify-between text-black">
+                        {user?.displayName}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </>
+    // all navlink
     const links = <>
         <li><NavLink to="/" className="text-lg text-white hover:text-yellow-400">Home</NavLink></li>
         <li><NavLink to="/findTutors/all" className="text-lg text-white hover:text-yellow-400">Find Tutors</NavLink></li>
         <li><NavLink to="/addTutorials" className="text-lg text-white hover:text-yellow-400">Add Tutorials</NavLink></li>
         <li><NavLink to="/myTutorials" className="text-lg text-white hover:text-yellow-400">My Tutorials</NavLink></li>
         <li><NavLink to="/myBookedTutors" className="text-lg text-white hover:text-yellow-400">My Booked Tutors</NavLink></li>
-        <li>
-            {
-                user?<button
-                onClick={signout}
-                to="login"
-                className="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-500"
-            >
-                Log Out
-            </button>:<Link
-                to="login"
-                className="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-500"
-            >
-                Sign Up
-            </Link>
-            }  
+        <li className='flex justify-center items-center gap-3'>
+
+            {loading ?  <span className="loading loading-ring loading-lg"></span>
+                :<>
+                {user ?<>
+                    <button
+                        onClick={signout}
+                        to="login"
+                        className="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-500"
+                    >
+                        Log Out
+                    </button>
+                    {profile}
+                </>  :
+                <>
+                    <Link
+                        to="login"
+                        className="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-500"
+                    >
+                        Sign Up
+                    </Link>
+                </>}
+            </>
+            }
+
         </li>
     </>
-// hamburger icon
-    const hamburger=<>
-      <svg
-                                className="w-8 h-8"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                ></path>
-                            </svg>
+    // hamburger icon
+    const hamburger = <>
+        <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+        </svg>
     </>
-// cross icon
-    const crossIcon=<>
-                    <svg
-                        className="w-8 h-8"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M6 18L18 6M6 6l12 12"
-                        >
-                         </path>
-                    </svg>
+    // cross icon
+    const crossIcon = <>
+        <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+            >
+            </path>
+        </svg>
     </>
-
     return (
         <nav className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-lg sticky z-10 top-0">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,11 +113,11 @@ const Navbar = () => {
                             className="text-white focus:outline-none hover:text-yellow-400"
                         >
                             {
-                                isOpen?crossIcon:hamburger
+                                isOpen ? crossIcon : hamburger
                             }
                         </button>
                     </div>
-                    <ul className="hidden lg:flex space-x-8">
+                    <ul className="hidden lg:flex lg:items-center space-x-8">
                         {links}
                     </ul>
                 </div>
@@ -95,7 +125,7 @@ const Navbar = () => {
             {isOpen && (
                 <div className="lg:hidden bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white">
                     <ul className="flex flex-col items-center space-y-4 py-4">
-                       {links}
+                        {links}
                     </ul>
                 </div>
             )}
