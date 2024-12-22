@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaChalkboardTeacher, FaCommentDots, FaLanguage, FaUsers } from "react-icons/fa";
+import { FaChalkboardTeacher, FaLanguage, FaUsers } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 const Stat = () => {
@@ -18,7 +19,7 @@ const Stat = () => {
                         </div>
                         {/* Reviews Count */}
                         <div className="flex flex-col items-center bg-white bg-opacity-10 rounded-lg p-6 shadow-md hover:scale-105 transform transition duration-300">
-                            <FaCommentDots className="text-4xl text-green-400 mb-4" />
+                            <FaStar  className="text-4xl text-green-400 mb-4" />
                             <h3 className="text-3xl font-semibold">{counterOn && <CountUp end={5000} duration={1} delay={0} />}+</h3>
                             <p className="text-lg mt-2">Verified Reviews</p>
                         </div>
