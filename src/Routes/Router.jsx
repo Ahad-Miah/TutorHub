@@ -8,6 +8,7 @@ import MyBookedTutors from "../Pages/MyBookedTutors";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Details from "../Pages/Details";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Router =createBrowserRouter([
     
@@ -25,19 +26,19 @@ const Router =createBrowserRouter([
             },
             {
                 path:"details",
-                element:<Details></Details>
+                element:<PrivateRoute><Details></Details></PrivateRoute>
             },
             {
                 path:"addTutorials",
-                element:<AddTutorials></AddTutorials>
+                element:<PrivateRoute><AddTutorials></AddTutorials></PrivateRoute>
             },
             {
                 path:"myTutorials",
-                element:<MyTutorials></MyTutorials>
+                element:<PrivateRoute><MyTutorials></MyTutorials></PrivateRoute>
             },
             {
                 path:"myBookedTutors",
-                element:<MyBookedTutors></MyBookedTutors>
+                element:<PrivateRoute><MyBookedTutors></MyBookedTutors></PrivateRoute>
             },
             {
                 path:"login",

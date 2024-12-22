@@ -6,7 +6,6 @@ const AuthProvider = ({children}) => {
 
     const[loading,setLoading]=useState(true);
     const [user, setUser] = useState(null);
-
     // handle register
     const register=(email,password)=>{
        setLoading(true);
@@ -29,9 +28,8 @@ const AuthProvider = ({children}) => {
     // signout
     const signout=()=>{
         setLoading(true);
-        signOut(auth)
-        .then(() => { })
-            .catch(err => console.log(err));
+        return signOut(auth)
+        
     }
 
      // observer

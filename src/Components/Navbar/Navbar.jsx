@@ -1,15 +1,24 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate=useNavigate();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
     const { signout, user, loading } = useContext(AuthContext);
     console.log(user)
+    // sign out
+    const handleSignout=()=>{
+        signout()
+        .then(() => {
+            navigate('/login');
+        })
+        .catch(err => console.log(err));
+    }
     // user profile
     const profile = <>
         <div className="dropdown dropdown-end">
@@ -44,7 +53,7 @@ const Navbar = () => {
                 :<>
                 {user ?<>
                     <button
-                        onClick={signout}
+                        onClick={handleSignout}
                         to="login"
                         className="px-4 py-2 bg-yellow-400 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-500"
                     >
