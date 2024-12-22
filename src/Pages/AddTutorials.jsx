@@ -1,5 +1,4 @@
 import React from 'react';
-
 const AddTutorials = () => {
     return (
         <section className="py-20 px-6 bg-gradient-to-br from-indigo-500 to-purple-500 min-h-screen">
