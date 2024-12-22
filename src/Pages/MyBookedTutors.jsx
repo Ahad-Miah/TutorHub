@@ -15,7 +15,6 @@ const MyBookedTutors = () => {
         const {data}=await axios.get(`${import.meta.env.VITE_apiUrl}bookedTutors/${user?.email}`)
         setMyBookedTutor(data);
     }
-    console.log(myBookedTutor);
     return (
         <section className="py-20 px-6 bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen">
         <div className="max-w-7xl mx-auto">

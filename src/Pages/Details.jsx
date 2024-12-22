@@ -1,42 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-const tutors = [
-    {
-      id: 1,
-      name: "John Doe",
-      image: "https://via.placeholder.com/300",
-      language: "English",
-      description: "John is an experienced English tutor who specializes in improving spoken and written communication.",
-      price: "$25/hour",
-      review: 4.5,
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      image: "https://via.placeholder.com/300",
-      language: "Spanish",
-      description: "Jane has 10+ years of experience teaching Spanish and tailoring lessons to individual needs.",
-      price: "$30/hour",
-      review: 4.7,
-    },
-    {
-      id: 3,
-      name: "Carlos Garcia",
-      image: "https://via.placeholder.com/300",
-      language: "French",
-      description: "Carlos is a native French speaker offering personalized lessons for all levels.",
-      price: "$20/hour",
-      review: 4.8,
-    },
-  ];
+// const tutors = [
+//     {
+//       id: 1,
+//       name: "John Doe",
+//       image: "https://via.placeholder.com/300",
+//       language: "English",
+//       description: "John is an experienced English tutor who specializes in improving spoken and written communication.",
+//       price: "$25/hour",
+//       review: 4.5,
+//     },
+//     {
+//       id: 2,
+//       name: "Jane Smith",
+//       image: "https://via.placeholder.com/300",
+//       language: "Spanish",
+//       description: "Jane has 10+ years of experience teaching Spanish and tailoring lessons to individual needs.",
+//       price: "$30/hour",
+//       review: 4.7,
+//     },
+//     {
+//       id: 3,
+//       name: "Carlos Garcia",
+//       image: "https://via.placeholder.com/300",
+//       language: "French",
+//       description: "Carlos is a native French speaker offering personalized lessons for all levels.",
+//       price: "$20/hour",
+//       review: 4.8,
+//     },
+//   ];
 
 const Details = () => {
 
   const {user}=useContext(AuthContext);
-
     const tutor=useLoaderData();
     const handleBooking=()=>{
       const info={
@@ -48,11 +47,14 @@ const Details = () => {
         tutorEmail:tutor.email,
         email:user?.email
       }
-      axios.post(`${import.meta.env.VITE_apiUrl}bookedTutors`,info)
+       axios.post(`${import.meta.env.VITE_apiUrl}bookedTutors`,info)
       .then(result=>{
           if(result.data.insertedId){
               toast.success("Booked Successfully");
           }
+      })
+      .catch(err=>{
+        toast.error("Already Booked");
       });
     }
     return (
