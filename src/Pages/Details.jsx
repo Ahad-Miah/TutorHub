@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 const tutors = [
     {
       id: 1,
@@ -32,7 +35,26 @@ const tutors = [
 
 const Details = () => {
 
+  const {user}=useContext(AuthContext);
+
     const tutor=useLoaderData();
+    const handleBooking=()=>{
+      const info={
+        tutorId:tutor._id,
+        image:tutor.image,
+        language:tutor.language,
+        price:tutor.price,
+        tutorEmail:tutor.email,
+        email:user?.email
+      }
+      axios.post(`${import.meta.env.VITE_apiUrl}bookedTutors`,info)
+      .then(result=>{
+          if(result.data.insertedId){
+            console.log(result.data);
+              toast.success("Booked Successfully");
+          }
+      });
+    }
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-6 flex items-center justify-center">
         <div className="max-w-6xl w-full h-full bg-white rounded-lg shadow-xl overflow-hidden">
@@ -61,7 +83,7 @@ const Details = () => {
                 Review: {tutor.review}
               </p>
   
-              <button className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200">
+              <button onClick={handleBooking} className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200">
                 Book Now
               </button>
             </div>
