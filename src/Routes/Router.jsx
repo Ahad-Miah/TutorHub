@@ -9,8 +9,6 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Details from "../Pages/Details";
 
-
-
 const Router =createBrowserRouter([
     
     {
