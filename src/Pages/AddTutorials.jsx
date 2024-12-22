@@ -1,12 +1,49 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 const AddTutorials = () => {
+
+    const{user}=useContext(AuthContext)
+    const handleAdd=(e)=>{
+        e.preventDefault();
+
+        const form=e.target;
+        const name=form.name.value;
+        const email=form.email.value;
+        const image=form.image.value;
+        const language=form.language.value;
+        const price=form.price.value;
+        const description=form.description.value;
+        const review=form.review.value;
+        
+        const tutorInfo={
+            name,
+            email,
+            image,
+            language,
+            price,
+            description,
+            review
+        }
+        console.log(tutorInfo);
+        axios.post(`http://localhost:5000/tutorials`,tutorInfo)
+        .then(result=>{
+            console.log(result.data)
+            if(result.data.insertedId){
+                form.reset();
+                toast.success("Added Successfully");
+            }
+        });
+
+    }
     return (
         <section className="py-20 px-6 bg-gradient-to-br from-indigo-500 to-purple-500 min-h-screen">
             <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
                 <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
                     Add a Tutorial
                 </h2>
-                <form className="space-y-6">
+                <form onSubmit={handleAdd} className="space-y-6">
                     {/* Name */}
                     <div>
                         <label
@@ -18,7 +55,7 @@ const AddTutorials = () => {
                             type="text"
                             id="name"
                             name='name'
-                            value="John Doe"
+                            value={user?.displayName}
                             disabled
                             className="w-full p-3 mt-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-100"
                         />
@@ -35,7 +72,7 @@ const AddTutorials = () => {
                             type="email"
                             name='email'
                             id="email"
-                            value="johndoe@example.com"
+                            value={user?.email}
                             disabled
                             className="w-full p-3 mt-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-gray-100"
                         />
