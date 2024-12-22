@@ -3,6 +3,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { LiaEditSolid } from "react-icons/lia";
 import axios from 'axios';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const MyTutorials = () => {
 
@@ -16,7 +17,6 @@ const MyTutorials = () => {
         const {data}=await axios.get(`${import.meta.env.VITE_apiUrl}myTutorials/${user.email}`)
         setMyTutorial(data);
     }
-    console.log(myTutorial);
     return (
         <section className="py-20 px-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
         <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-8">
@@ -63,12 +63,14 @@ const MyTutorials = () => {
                       >
                         <MdDeleteForever />
                       </button>
+                      <Link to={`/update/${tutorial._id}`}>
                       <button
                         className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 transition"
-                        onClick={() => handleEdit(tutorial.id)} 
+                         
                       >
                         <LiaEditSolid />
                       </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}

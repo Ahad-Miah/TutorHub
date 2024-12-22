@@ -9,6 +9,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Details from "../Pages/Details";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import UpdateTutorial from "../Pages/UpdateTutorial";
 
 const Router =createBrowserRouter([
     
@@ -48,6 +49,11 @@ const Router =createBrowserRouter([
             {
                 path:"register",
                 element:<Register></Register>
+            },
+            {
+                path:'update/:id',
+                element:<UpdateTutorial></UpdateTutorial>,
+                loader:({params})=> fetch(`${import.meta.env.VITE_apiUrl}tutorials/${params.id}`)
             }
         ]
     }
