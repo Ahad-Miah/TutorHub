@@ -32,8 +32,6 @@ import { Link, useParams } from 'react-router-dom';
 const FindTutors = () => {
 
   const {language}=useParams();
-  console.log(language);
-
   const[tutors,setTutors]=useState();
 
   useEffect(()=>{
@@ -44,8 +42,14 @@ const FindTutors = () => {
         const {data}= await axios.get(`${import.meta.env.VITE_apiUrl}tutorials?language=${language}`)
         setTutors(data);
   }
-
-  console.log(tutors);
+  if(tutors?.length===0){
+    return <div className="p-6 min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 flex flex-col justify-center items-center">
+      <h1 className='text-3xl font-bold text-center text-white mb-8'>No Tutors in this Language</h1>
+      <Link to="/">
+      <button className='btn bg-white animate-bounce text-black'>Home</button>
+      </Link>
+    </div>
+  }
     return (
         <div className="p-6 min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
       <h2 className="text-3xl font-bold text-center text-white mb-8">
@@ -70,7 +74,7 @@ const FindTutors = () => {
               <p className="text-lg text-gray-600 mb-2">Review: {tutor.review}</p>
               <p className="text-gray-700 text-sm mb-4">{tutor.description.slice(0,90)}</p>
               <div className="badge badge-secondary mb-4">Price:$200</div>
-              <Link to={`/details`}>
+              <Link to={`/details/${tutor._id}`}>
               <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
                 View Details
               </button>
