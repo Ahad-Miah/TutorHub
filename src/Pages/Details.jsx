@@ -42,6 +42,7 @@ const Details = () => {
       const info={
         tutorId:tutor._id,
         image:tutor.image,
+        name:tutor.name,
         language:tutor.language,
         price:tutor.price,
         tutorEmail:tutor.email,
@@ -50,7 +51,6 @@ const Details = () => {
       axios.post(`${import.meta.env.VITE_apiUrl}bookedTutors`,info)
       .then(result=>{
           if(result.data.insertedId){
-            console.log(result.data);
               toast.success("Booked Successfully");
           }
       });
