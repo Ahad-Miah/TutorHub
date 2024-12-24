@@ -47,6 +47,9 @@ const Details = () => {
         tutorEmail:tutor.email,
         email:user?.email
       }
+      if(info.tutorEmail==info.email){
+        return toast.error("Tutors can't booked his own tutorial");
+      }
        axios.post(`${import.meta.env.VITE_apiUrl}bookedTutors`,info)
       .then(result=>{
           if(result.data.insertedId){
