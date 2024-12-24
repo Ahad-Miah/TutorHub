@@ -31,63 +31,73 @@ import { Link, useParams } from 'react-router-dom';
 
 const FindTutors = () => {
 
-  const {language}=useParams();
-  const[tutors,setTutors]=useState();
+  const { language } = useParams();
+  const [tutors, setTutors] = useState();
+  const [search,setSearch]=useState('');
 
-  useEffect(()=>{
-      getTutors()
-  },[])
+  useEffect(() => {
+    getTutors()
+  }, [language,search])
 
-  const getTutors=async()=>{
-        const {data}= await axios.get(`${import.meta.env.VITE_apiUrl}tutorials?language=${language}`)
-        setTutors(data);
+  const getTutors = async () => {
+    const { data } = await axios.get( `${import.meta.env.VITE_apiUrl}tutorials?language=${language}&search=${search}`)
+    setTutors(data);
   }
-  if(tutors?.length===0){
+  if (tutors?.length === 0) {
     return <div className="p-6 min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 flex flex-col justify-center items-center">
       <h1 className='text-3xl font-bold text-center text-white mb-8'>No Tutors in this Language</h1>
       <Link to="/">
-      <button className='btn bg-white animate-bounce text-black'>Home</button>
+        <button className='btn bg-white animate-bounce text-black'>Home</button>
       </Link>
     </div>
   }
-    return (
-        <div className="p-6 min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-      <h2 className="text-3xl font-bold text-center text-white mb-8">
+  console.log(search);
+  return (
+    <div className="p-6 min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+      <div className='flex flex-col justify-center items-center gap-4 mb-8'>
+      <h2 className="text-3xl font-bold text-center text-white">
         Find a Tutor
       </h2>
+      <input
+        type="text"
+        onChange={(e)=>setSearch(e.target.value)}
+        placeholder="Search tutors"
+        className="input  input-bordered input-primary w-full max-w-xs" />
+      </div>
+     
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-3">
         {tutors?.map((tutor) => (
           <div
             key={tutor.id}
             className="bg-white h-[500px] rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
           >
-           <div className='w-full h-52'>
-           <img
-              src={tutor.image}
-              alt={tutor.name}
-              className="w-full h-full object-cover"
-            />
-           </div>
+            <div className='w-full h-52'>
+              <img
+                src={tutor.image}
+                alt={tutor.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
             <div className="p-6">
               <h3 className="text-2xl font-semibold text-gray-800 mb-2">
                 {tutor.name}
               </h3>
               <p className="text-lg text-gray-600 mb-2">Language: {tutor.language}</p>
               <p className="text-lg text-gray-600 mb-2">Review: {tutor.review}</p>
-              <p className="text-gray-700 text-sm mb-4">{tutor.description.slice(0,90)}</p>
+              <p className="text-gray-700 text-sm mb-4">{tutor.description.slice(0, 90)}</p>
               <div className="badge badge-secondary mb-4">Price:$200</div>
               <Link to={`/details/${tutor._id}`}>
-              <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
-                View Details
-              </button>
+                <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
+                  View Details
+                </button>
               </Link>
-              
+
             </div>
           </div>
         ))}
       </div>
     </div>
-    );
+  );
 };
 
 export default FindTutors;

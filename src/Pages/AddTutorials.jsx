@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const AddTutorials = () => {
 
     const{user}=useContext(AuthContext)
+    const navigate=useNavigate();
     const handleAdd=(e)=>{
         e.preventDefault();
 
@@ -32,6 +34,7 @@ const AddTutorials = () => {
             if(result.data.insertedId){
                 form.reset();
                 toast.success("Added Successfully");
+                navigate('/myTutorials');
             }
         });
 
