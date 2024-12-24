@@ -55,17 +55,19 @@ const FindTutors = () => {
       <h2 className="text-3xl font-bold text-center text-white mb-8">
         Find a Tutor
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-3">
         {tutors?.map((tutor) => (
           <div
             key={tutor.id}
             className="bg-white h-[500px] rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
           >
-            <img
+           <div className='w-full h-52'>
+           <img
               src={tutor.image}
               alt={tutor.name}
-              className="w-full h-48 object-cover"
+              className="w-full h-full object-cover"
             />
+           </div>
             <div className="p-6">
               <h3 className="text-2xl font-semibold text-gray-800 mb-2">
                 {tutor.name}

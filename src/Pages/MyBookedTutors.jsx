@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const MyBookedTutors = () => {
 
@@ -15,6 +16,18 @@ const MyBookedTutors = () => {
         const {data}=await axios.get(`${import.meta.env.VITE_apiUrl}bookedTutors/${user?.email}`)
         setMyBookedTutor(data);
     }
+    // console.log(myBookedTutor);
+    const addReview=(id)=>{
+        axios.patch(`${import.meta.env.VITE_apiUrl}add-review/${id}`,myBookedTutor)
+        .then(result=>{
+            if(result.data.acknowledged){
+                toast.success("Review send Successfully");
+            }
+        })
+        .catch(err=>console.log(err))
+         
+    }
+
     return (
         <section className="py-20 px-6 bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen">
         <div className="max-w-7xl mx-auto">
@@ -36,7 +49,7 @@ const MyBookedTutors = () => {
                   </h3>
                   <p className="text-gray-600 mb-1">Language: {tutor.language}</p>
                   <p className="text-gray-600 mb-3">Price: $ {tutor.price}</p>
-                  <button className="w-full py-2 px-4 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 transition">
+                  <button onClick={()=>addReview(tutor.tutorId)} className="w-full py-2 px-4 bg-purple-500 text-white rounded-lg shadow-md hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 transition">
                     Leave a Review
                   </button>
                 </div>

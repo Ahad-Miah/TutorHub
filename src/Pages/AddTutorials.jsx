@@ -15,7 +15,7 @@ const AddTutorials = () => {
         const language=form.language.value;
         const price=form.price.value;
         const description=form.description.value;
-        const review=form.review.value;
+        const review=parseInt(form.review.value);
         
         const tutorInfo={
             name,
@@ -26,7 +26,7 @@ const AddTutorials = () => {
             description,
             review
         }
-        console.log(tutorInfo);
+        // console.log(tutorInfo);
         axios.post(`${import.meta.env.VITE_apiUrl}tutorials`,tutorInfo)
         .then(result=>{
             if(result.data.insertedId){

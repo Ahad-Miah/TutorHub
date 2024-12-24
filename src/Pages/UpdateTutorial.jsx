@@ -17,7 +17,7 @@ const UpdateTutorial = () => {
         const language=form.language.value;
         const price=form.price.value;
         const description=form.description.value;
-        const review=form.review.value;
+        const review=parseInt(form.review.value);
         
         const tutorInfo={
             name,
@@ -28,7 +28,7 @@ const UpdateTutorial = () => {
             description,
             review
         }
-        console.log(tutorInfo);
+        // console.log(tutorInfo);
         axios.put(`${import.meta.env.VITE_apiUrl}tutorials/${updateData._id}`,tutorInfo)
         .then(result=>{
             form.reset();
