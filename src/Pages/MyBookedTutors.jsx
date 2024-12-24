@@ -29,15 +29,15 @@ const MyBookedTutors = () => {
     }
 
     return (
-        <section className="py-20 px-6 bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen">
+        <section className="py-20 px-6  min-h-screen">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
+          <h2 className="text-3xl font-extrabold  text-center mb-8">
             Your Booked Tutors
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Tutor Card */}
             {myBookedTutor?.map((tutor) => (
-              <div key={tutor.id} className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div key={tutor.id} className="bg-white rounded-2xl shadow-xl overflow-hidden  border-t-4 border-purple-500 border-b-2">
                 <img
                   src={tutor?.image}
                   alt="Tutor"

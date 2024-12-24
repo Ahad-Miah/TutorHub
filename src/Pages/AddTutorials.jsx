@@ -40,12 +40,13 @@ const AddTutorials = () => {
 
     }
     return (
-        <section className="py-20 px-6 bg-gradient-to-br from-indigo-500 to-purple-500 min-h-screen">
-            <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
+        <section className="py-20 px-6  min-h-screen">
+            {/* bg-gradient-to-br from-indigo-500 to-purple-500 */}
+            <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500  rounded-2xl shadow-2xl p-8">
                 <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
                     Add a Tutorial
                 </h2>
-                <form onSubmit={handleAdd} className="space-y-6">
+                <form onSubmit={handleAdd} className="space-y-6 ">
                     {/* Name */}
                     <div>
                         <label
@@ -91,7 +92,8 @@ const AddTutorials = () => {
                             type="text"
                             id="image"
                             name='image'
-                            className="w-full p-3 mt-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                            placeholder='Image url'
+                            className="w-full p-3 mt-1 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                         />
                     </div>
 
@@ -105,7 +107,8 @@ const AddTutorials = () => {
                         <select
                             id="category"
                             name='language'
-                            className="w-full p-3 mt-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                            className="w-full p-3 mt-1 rounded-lg border border-gray-300 
+                            bg-white text-black focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                         >
                             <option>English</option>
                             <option>Spanish</option>
@@ -130,7 +133,7 @@ const AddTutorials = () => {
                             id="price"
                             name='price'
                             placeholder="Enter price"
-                            className="w-full p-3 mt-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                            className="w-full p-3 mt-1 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                         />
                     </div>
 
@@ -145,7 +148,7 @@ const AddTutorials = () => {
                             id="description"
                             name='description'
                             placeholder="Write a brief description of the tutorial"
-                            className="w-full p-3 mt-1 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                            className="w-full p-3 mt-1 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                         ></textarea>
                     </div>
 

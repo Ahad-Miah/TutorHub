@@ -1,6 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { IoIosSunny } from "react-icons/io";
+import { FiMoon } from "react-icons/fi";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,8 +11,30 @@ const Navbar = () => {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+    // theme toogle
+    const [themeToggle,setThemeToggle]=useState(true);
+    const [theme,setTheme]=useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const localTheme = localStorage.getItem("theme");
+        document.querySelector("html").setAttribute("data-theme", localTheme)
+
+    }, [theme]);
+
+    const handleToggle=()=>{
+        setThemeToggle(!themeToggle);
+        
+        if(themeToggle){
+            setTheme("dark");
+        }
+        else{
+            setTheme("light");
+        }
+    }
     const { signout, user, loading } = useContext(AuthContext);
-    console.log(user)
+    // console.log(user)
     // sign out
     const handleSignout=()=>{
         signout()
@@ -121,7 +145,7 @@ const Navbar = () => {
                     <Link to="/" className="text-3xl font-extrabold text-white">
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">Tutor<span className="text-white">Hub</span></span>
                     </Link>
-                    <div className="lg:hidden">
+                    <div className="lg:hidden flex gap-3">
                         <button
                             onClick={toggleMenu}
                             className="text-white focus:outline-none hover:text-yellow-400"
@@ -130,14 +154,24 @@ const Navbar = () => {
                                 isOpen ? crossIcon : hamburger
                             }
                         </button>
+                        <div onClick={handleToggle} className='p-2'>
+                            {
+                               themeToggle? <FiMoon  className="h-10 bg-[#24292E] text-white rounded-full w-10"/>:<IoIosSunny  className="h-10 bg-yellow-500 text-white rounded-full w-10"/>    
+                            }
+                        </div>
                     </div>
                     <ul className="hidden lg:flex lg:items-center space-x-8">
                         {links}
+                        <div onClick={handleToggle} className='p-2'>
+                            {
+                                themeToggle? <FiMoon  className="h-10 bg-[#24292E] text-white rounded-full w-10"/>:<IoIosSunny  className="h-10 bg-yellow-500 text-white rounded-full w-10"/>    
+                            }
+                        </div>
                     </ul>
                 </div>
             </div>
             {isOpen && (
-                <div className="lg:hidden bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white">
+                <div  className="lg:hidden bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white">
                     <ul className="flex flex-col items-center space-y-4 py-4">
                         {links}
                     </ul>

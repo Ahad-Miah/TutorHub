@@ -46,8 +46,8 @@ const MyTutorials = () => {
       });
     }
     return (
-        <section className="py-20 px-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-        <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-8">
+        <section className="py-20 px-6 ">
+        <div className="max-w-7xl mx-auto bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-6">
             My Tutorials
           </h2>
