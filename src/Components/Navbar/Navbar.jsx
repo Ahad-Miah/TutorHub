@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { IoIosSunny } from "react-icons/io";
 import { FiMoon } from "react-icons/fi";
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,9 +29,11 @@ const Navbar = () => {
         
         if(themeToggle){
             setTheme("dark");
+            toast.success(`Theme changed to dark`)
         }
         else{
             setTheme("light");
+            toast.success(`Theme changed to light`)
         }
     }
     const { signout, user, loading } = useContext(AuthContext);

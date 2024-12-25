@@ -54,7 +54,7 @@ const Router =createBrowserRouter([
                 path:'update/:id',
                 element:<UpdateTutorial></UpdateTutorial>,
                 loader:({params})=> fetch(`${import.meta.env.VITE_apiUrl}tutorials/${params.id}`)
-            }
+            },
         ]
     }
 
