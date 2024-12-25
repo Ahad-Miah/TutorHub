@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const MyBookedTutors = () => {
 
+  const axiosSecure=useAxiosSecure();
     const[myBookedTutor,setMyBookedTutor]=useState([]);
     const {user}=useContext(AuthContext);
 
@@ -13,7 +15,7 @@ const MyBookedTutors = () => {
     },[])
 
     const myBookedTutors=async()=>{
-        const {data}=await axios.get(`${import.meta.env.VITE_apiUrl}bookedTutors/${user?.email}`)
+        const {data}=await axiosSecure.get(`bookedTutors/${user?.email}`)
         setMyBookedTutor(data);
     }
     // console.log(myBookedTutor);

@@ -5,17 +5,18 @@ import axios from 'axios';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import useAxiosSecure from '../hooks/useAxiosSecure';
 const MyTutorials = () => {
 
     const {user}=useContext(AuthContext);
     const[myTutorial,setMyTutorial]=useState([]);
+    const axiosSecure=useAxiosSecure();
 
     useEffect(()=>{
         getMyTutorials()
     },[])
     const getMyTutorials=async()=>{
-        const {data}=await axios.get(`${import.meta.env.VITE_apiUrl}myTutorials/${user.email}`)
+        const {data}=await axiosSecure.get(`myTutorials/${user.email}`)
         setMyTutorial(data);
     }
 
