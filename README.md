@@ -7,7 +7,7 @@ This project is a user-friendly platform that allows users to browse, book, and 
 The purpose of this project is to connect users with qualified tutors offering tutorials in diverse languages. Users can book tutorials, manage their bookings, and review their selected tutors, ensuring a comprehensive learning experience.
 
 ## Live URL
-
+https://startling-brigadeiros-0c7e32.netlify.app/
 
 
 ## Key Features
