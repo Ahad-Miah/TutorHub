@@ -6,6 +6,7 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 const MyTutorials = () => {
 
     const {user}=useContext(AuthContext);
@@ -48,6 +49,9 @@ const MyTutorials = () => {
     }
     return (
         <section className="py-20 px-6 ">
+          <Helmet>
+            <title>My Tutorial || TutorHub</title>
+          </Helmet>
         <div className="max-w-7xl mx-auto bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-6">
             My Tutorials

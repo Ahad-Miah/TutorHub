@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import useAxiosSecure from '../hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const MyBookedTutors = () => {
 
@@ -32,6 +33,9 @@ const MyBookedTutors = () => {
 
     return (
         <section className="py-20 px-6  min-h-screen">
+          <Helmet>
+            <title>My Booked Tutors || TutorHub</title>
+          </Helmet>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-extrabold  text-center mb-8">
             Your Booked Tutors

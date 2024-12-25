@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 // const tutors = [
 //     {
 //       id: 1,
@@ -64,6 +65,7 @@ const Details = () => {
     }
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-6 flex items-center justify-center">
+          <Helmet>Details || TutorHub</Helmet>
         <div className="max-w-6xl w-full h-full bg-white rounded-lg shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* Tutor Image */}

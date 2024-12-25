@@ -3,6 +3,7 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 const AddTutorials = () => {
 
     const{user}=useContext(AuthContext)
@@ -41,6 +42,9 @@ const AddTutorials = () => {
     }
     return (
         <section className="py-20 px-6  min-h-screen">
+            <Helmet>
+                <title>Add Tutorial || TutorHub</title>
+            </Helmet>
             {/* bg-gradient-to-br from-indigo-500 to-purple-500 */}
             <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500  rounded-2xl shadow-2xl p-8">
                 <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">

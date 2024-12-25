@@ -6,6 +6,7 @@ import registerAnimation from '../assets/Lottiefiles/register.json'
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
 
@@ -56,6 +57,9 @@ const Register = () => {
     }
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 flex justify-center items-center px-5 md:px-0">
+            <Helmet>
+                <title>Register || TutorHub</title>
+            </Helmet>
             <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md my-10">
                 <div className="flex flex-col items-center">
                     {/* Lottie Animation */}

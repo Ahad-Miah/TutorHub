@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -39,6 +40,9 @@ const UpdateTutorial = () => {
     }
     return (
         <section className="py-20 px-6 bg-gradient-to-br from-indigo-500 to-purple-500 min-h-screen">
+            <Helmet>
+                <title>Update Tutorial || TutorHub</title>
+            </Helmet>
         <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
             <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
                 Add a Tutorial

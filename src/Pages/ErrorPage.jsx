@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import errorAnimation from '../assets/Lottiefiles/error.json'
 import Lottie from 'lottie-react';
+import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
     return (
         <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500">
-        {/* <Helmet>
+        <Helmet>
           <title>Error</title>
-        </Helmet> */}
+        </Helmet>
         <div className="text-center">
         
             <Lottie animationData={errorAnimation}></Lottie>

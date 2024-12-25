@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 
 // const tutors = [
@@ -53,6 +54,9 @@ const FindTutors = () => {
   }
   return (
     <div className="p-6 min-h-screen ">
+      <Helmet>
+        <title>Find Tutors || TutorHub</title>
+      </Helmet>
       {/* bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 */}
       <div className='flex flex-col justify-center items-center gap-4 mb-8'>
       <h2 className="text-3xl font-bold text-center">
