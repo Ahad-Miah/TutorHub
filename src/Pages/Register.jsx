@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import registerAnimation from '../assets/Lottiefiles/register.json'
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Register = () => {
 
@@ -24,12 +25,19 @@ const Register = () => {
             toast.warning("Password length Should be  Six and at least one uppercase and one lowercase letter !");
             return;
         }
+        const usersInfo={
+            name,email,image:photo
+        }
 
         register(email, password)
             .then(res => {
                 handleUpdateProfile(name, photo)
                     .then(res => {
                         toast.success("Registration successful")
+                        axios.post(`${import.meta.env.VITE_apiUrl}users`, usersInfo)
+                            .then(result => {
+                                
+                            });
                         navigate(location?.state ? location.state : "/");
                         //   window.location.reload();
                     })
