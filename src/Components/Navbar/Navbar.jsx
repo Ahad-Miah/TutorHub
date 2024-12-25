@@ -4,6 +4,8 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { IoIosSunny } from "react-icons/io";
 import { FiMoon } from "react-icons/fi";
 import { toast } from 'react-toastify';
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +52,12 @@ const Navbar = () => {
     const profile = <>
         <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
+                <div className="w-10 rounded-full"
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user?.displayName}
+                data-tooltip-place="bottom"
+                >
+                    <Tooltip id='my-tooltip'></Tooltip>
                     <img
                         referrerPolicy='no-referrer'
                         alt={user?.displayName}
