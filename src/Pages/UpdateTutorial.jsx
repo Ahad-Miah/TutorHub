@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const UpdateTutorial = () => {
 
     const updateData=useLoaderData();
-    console.log("data",updateData);
+    // console.log("data",updateData);
+    const navigate=useNavigate();
 
     const handleUpdate=(e)=>{
         e.preventDefault();
@@ -35,6 +36,9 @@ const UpdateTutorial = () => {
             form.reset();
             if(result.data.acknowledged){
                 toast.success("Updated Successfully");
+                console.log(result.data);
+                navigate('/myTutorials')
+
             }
         });
     }
@@ -45,7 +49,7 @@ const UpdateTutorial = () => {
             </Helmet>
         <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
             <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
-                Add a Tutorial
+                Update a Tutorial
             </h2>
             <form onSubmit={ handleUpdate} className="space-y-6">
                 {/* Name */}
@@ -179,7 +183,7 @@ const UpdateTutorial = () => {
                         type="submit"
                         className="w-full py-3 px-6 rounded-lg text-white font-semibold bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-indigo-500 hover:to-purple-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300"
                     >
-                        Submit Tutorial
+                        Update Tutorial
                     </button>
                 </div>
             </form>

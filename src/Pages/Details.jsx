@@ -65,7 +65,7 @@ const Details = () => {
     }
     return (
         <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-6 flex items-center justify-center">
-          <Helmet>Details || TutorHub</Helmet>
+          <Helmet><title>Details || TutorHub</title></Helmet>
         <div className="max-w-6xl w-full h-full bg-white rounded-lg shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* Tutor Image */}
@@ -78,7 +78,7 @@ const Details = () => {
             </div>
   
             {/* Tutor Info */}
-            <div className="p-6">
+            <div className="p-6 flex flex-col  justify-center">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">Name:{tutor.name}</h2>
               <p className="text-lg text-gray-600 mb-4">
                 <span className="font-semibold">Language:</span> {tutor.language}
