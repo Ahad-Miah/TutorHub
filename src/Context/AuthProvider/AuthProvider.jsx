@@ -50,7 +50,8 @@ const AuthProvider = ({children}) => {
                 const {data}=await axios.post(`${import.meta.env.VITE_apiUrl}jwt`,{email:CurrentUser?.email},{withCredentials:true})  
             }else{
                 setUser(CurrentUser)
-                const {data}=await axios.get(`${import.meta.env.VITE_apiUrl}logout`,{withCredentials:true})  
+                const {data}=await axios.get(`${import.meta.env.VITE_apiUrl}logout`,
+                {withCredentials:true})  
             }
             setLoading(false);
         })

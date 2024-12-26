@@ -10,14 +10,16 @@ const MyBookedTutors = () => {
   const axiosSecure=useAxiosSecure();
     const[myBookedTutor,setMyBookedTutor]=useState([]);
     const {user}=useContext(AuthContext);
+    const [loading,setLoading]=useState(true);
 
     useEffect(()=>{
         myBookedTutors()
-    },[])
+    },[loading,myBookedTutor])
 
     const myBookedTutors=async()=>{
         const {data}=await axiosSecure.get(`bookedTutors/${user?.email}`)
         setMyBookedTutor(data);
+        setLoading(false);
     }
     // console.log(myBookedTutor);
     const addReview=(id)=>{
@@ -30,7 +32,65 @@ const MyBookedTutors = () => {
         .catch(err=>console.log(err))
          
     }
-
+    if(loading){
+      return (
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-3'>
+        <div className="animate-pulse flex flex-col gap-4 p-4 w-full max-w-md mx-auto">
+          {/* Image Skeleton */}
+          <div className="bg-gray-300 h-48 w-full rounded-lg"></div>
+  
+          {/* Text Skeleton */}
+          <div className="space-y-2">
+            <div className="bg-gray-300 h-6 w-3/4 rounded"></div>
+            <div className="bg-gray-300 h-6 w-1/2 rounded"></div>
+          </div>
+  
+          {/* Buttons or Tags Skeleton */}
+          <div className="flex gap-2">
+            <div className="bg-gray-300 h-8 w-20 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-28 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-16 rounded-full"></div>
+          </div>
+        </div>
+        {/* two */}
+        <div className="animate-pulse flex flex-col gap-4 p-4 w-full max-w-md mx-auto">
+          {/* Image Skeleton */}
+          <div className="bg-gray-300 h-48 w-full rounded-lg"></div>
+  
+          {/* Text Skeleton */}
+          <div className="space-y-2">
+            <div className="bg-gray-300 h-6 w-3/4 rounded"></div>
+            <div className="bg-gray-300 h-6 w-1/2 rounded"></div>
+          </div>
+  
+          {/* Buttons or Tags Skeleton */}
+          <div className="flex gap-2">
+            <div className="bg-gray-300 h-8 w-20 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-28 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-16 rounded-full"></div>
+          </div>
+        </div>
+        {/* three */}
+        <div className="animate-pulse flex flex-col gap-4 p-4 w-full max-w-md mx-auto">
+          {/* Image Skeleton */}
+          <div className="bg-gray-300 h-48 w-full rounded-lg"></div>
+  
+          {/* Text Skeleton */}
+          <div className="space-y-2">
+            <div className="bg-gray-300 h-6 w-3/4 rounded"></div>
+            <div className="bg-gray-300 h-6 w-1/2 rounded"></div>
+          </div>
+  
+          {/* Buttons or Tags Skeleton */}
+          <div className="flex gap-2">
+            <div className="bg-gray-300 h-8 w-20 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-28 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-16 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+      )
+    }
     return (
         <section className="py-20 px-6  min-h-screen">
           <Helmet>

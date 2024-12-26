@@ -34,15 +34,17 @@ const FindTutors = () => {
 
   const { language } = useParams();
   const [tutors, setTutors] = useState();
-  const [search,setSearch]=useState('');
+  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getTutors()
-  }, [language,search])
+  }, [language, search, loading])
 
   const getTutors = async () => {
-    const { data } = await axios.get( `${import.meta.env.VITE_apiUrl}tutorials?language=${language}&search=${search}`)
+    const { data } = await axios.get(`${import.meta.env.VITE_apiUrl}tutorials?language=${language}&search=${search}`)
     setTutors(data);
+    setLoading(false);
   }
   if (tutors?.length === 0) {
     return <div className="p-6 min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 flex flex-col justify-center items-center">
@@ -52,6 +54,67 @@ const FindTutors = () => {
       </Link>
     </div>
   }
+
+  if (loading) {
+    return (
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-3'>
+        <div className="animate-pulse flex flex-col gap-4 p-4 w-full max-w-md mx-auto">
+          {/* Image Skeleton */}
+          <div className="bg-gray-300 h-48 w-full rounded-lg"></div>
+
+          {/* Text Skeleton */}
+          <div className="space-y-2">
+            <div className="bg-gray-300 h-6 w-3/4 rounded"></div>
+            <div className="bg-gray-300 h-6 w-1/2 rounded"></div>
+          </div>
+
+          {/* Buttons or Tags Skeleton */}
+          <div className="flex gap-2">
+            <div className="bg-gray-300 h-8 w-20 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-28 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-16 rounded-full"></div>
+          </div>
+        </div>
+        {/* two */}
+        <div className="animate-pulse flex flex-col gap-4 p-4 w-full max-w-md mx-auto">
+          {/* Image Skeleton */}
+          <div className="bg-gray-300 h-48 w-full rounded-lg"></div>
+
+          {/* Text Skeleton */}
+          <div className="space-y-2">
+            <div className="bg-gray-300 h-6 w-3/4 rounded"></div>
+            <div className="bg-gray-300 h-6 w-1/2 rounded"></div>
+          </div>
+
+          {/* Buttons or Tags Skeleton */}
+          <div className="flex gap-2">
+            <div className="bg-gray-300 h-8 w-20 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-28 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-16 rounded-full"></div>
+          </div>
+        </div>
+        {/* three */}
+        <div className="animate-pulse flex flex-col gap-4 p-4 w-full max-w-md mx-auto">
+          {/* Image Skeleton */}
+          <div className="bg-gray-300 h-48 w-full rounded-lg"></div>
+
+          {/* Text Skeleton */}
+          <div className="space-y-2">
+            <div className="bg-gray-300 h-6 w-3/4 rounded"></div>
+            <div className="bg-gray-300 h-6 w-1/2 rounded"></div>
+          </div>
+
+          {/* Buttons or Tags Skeleton */}
+          <div className="flex gap-2">
+            <div className="bg-gray-300 h-8 w-20 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-28 rounded-full"></div>
+            <div className="bg-gray-300 h-8 w-16 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+    )
+  }
   return (
     <div className="p-6 min-h-screen ">
       <Helmet>
@@ -59,16 +122,16 @@ const FindTutors = () => {
       </Helmet>
       {/* bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 */}
       <div className='flex flex-col justify-center items-center gap-4 mb-8'>
-      <h2 className="text-3xl font-bold text-center">
-        Find a Tutor
-      </h2>
-      <input
-        type="text"
-        onChange={(e)=>setSearch(e.target.value)}
-        placeholder="Search tutors"
-        className="input  input-bordered input-primary w-full max-w-xs" />
+        <h2 className="text-3xl font-bold text-center">
+          Find a Tutor
+        </h2>
+        <input
+          type="text"
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search tutors"
+          className="input  input-bordered input-primary w-full max-w-xs" />
       </div>
-     
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-3">
         {tutors?.map((tutor) => (
           <div
