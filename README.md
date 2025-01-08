@@ -62,6 +62,12 @@ Below are the main npm packages used in this project:
 - **react-sweetAlert2**:For alert
 - **swipper**:For carousel
 - **react-icons**:For many kinds of icons
-
+## For Local Machine Run
+```bash
+  npm i
+```
+```bash
+  npm run dev
+```
 ## Live URL
 https://startling-brigadeiros-0c7e32.netlify.app/
