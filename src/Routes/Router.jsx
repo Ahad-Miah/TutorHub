@@ -11,6 +11,13 @@ import Details from "../Pages/Details";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import UpdateTutorial from "../Pages/UpdateTutorial";
 import ErrorPage from "../Pages/ErrorPage";
+import AboutUs from "../Components/AboutUs/AboutUs";
+import Services from "../Components/Services/Services";
+import Category from "../Components/Category/Category";
+import Stat from "../Components/Stat/Stat";
+import Features from "../Components/Features/Features";
+import Banner from "../Components/Banner/Banner";
+import HowItWorks from "../Components/HowITWorks/HowItWorks";
 
 const Router =createBrowserRouter([
     
@@ -21,7 +28,7 @@ const Router =createBrowserRouter([
         children:[
             {
                 path:"/",
-                element:<Home></Home>
+                element:<Home></Home>,
             },
             {
                 path:"findTutors/:language",

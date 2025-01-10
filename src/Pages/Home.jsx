@@ -6,6 +6,7 @@ import Features from '../Components/Features/Features';
 import HowItWorks from '../Components/HowITWorks/HowItWorks';
 import { Helmet } from 'react-helmet-async';
 import AboutUs from '../Components/AboutUs/AboutUs';
+import Services from '../Components/Services/Services';
 
 const Home = () => {
     return (
@@ -21,6 +22,9 @@ const Home = () => {
             </section>
             <section>
                 <Stat></Stat>
+            </section>
+            <section>
+                <Services></Services>
             </section>
             <section>
                 <Features></Features>

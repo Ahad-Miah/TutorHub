@@ -6,6 +6,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import b1 from '../../assets/b1.jpg'
 import b2 from '../../assets/b2.jpg'
 import b3 from '../../assets/b3.jpg'
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -35,9 +36,11 @@ const Banner = () => {
                         <p className="mt-4 text-lg md:text-xl">
                             Discover expert tutors to boost your skills.
                         </p>
-                        <button className="mt-6 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow-md hover:bg-yellow-500">
+                       <Link to='/findTutors/all'>
+                       <button className="mt-6 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow-md hover:bg-yellow-500">
                             Get Started
                         </button>
+                       </Link>
                     </div>
                 </div>
             </SwiperSlide>
@@ -59,9 +62,11 @@ const Banner = () => {
                         <p className="mt-4 text-lg md:text-xl">
                             Learn from the best tutors worldwide.
                         </p>
-                        <button className="mt-6 px-6 py-3 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-600">
+                       <Link to='/findTutors/all'>
+                       <button className="mt-6 px-6 py-3 bg-purple-500 text-white font-semibold rounded-lg shadow-md hover:bg-purple-600">
                             Explore Tutors
                         </button>
+                       </Link>
                     </div>
                 </div>
             </SwiperSlide>
@@ -83,9 +88,11 @@ const Banner = () => {
                         <p className="mt-4 text-lg md:text-xl">
                             Flexible schedules, diverse courses, expert mentors.
                         </p>
-                        <button className="mt-6 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600">
+                      <Link to='/findTutors/all'>
+                      <button className="mt-6 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600">
                             Start Now
                         </button>
+                      </Link>
                     </div>
                 </div>
             </SwiperSlide>

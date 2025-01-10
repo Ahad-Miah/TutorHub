@@ -1,9 +1,10 @@
 import React from "react";
 import { FaChalkboardTeacher, FaGlobe, FaUsers } from "react-icons/fa";
 
+
 const AboutUs = () => {
     return (
-        <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white py-10 px-8 md:px-16">
+        <div id="aboutUs" className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white py-10 px-8 md:px-16">
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-center text-4xl font-extrabold mb-6">
                     About Us
@@ -15,9 +16,9 @@ const AboutUs = () => {
                     user-friendly way to connect and learn, making education
                     accessible to everyone.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Card 1 */}
-                    <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <div className="bg-white rounded-lg shadow-lg p-6 text-center transform transition duration-300 hover:scale-105">
                         <FaChalkboardTeacher className="text-purple-500 w-16 h-16 mx-auto mb-4" />
                         <h3 className="text-2xl font-bold text-gray-800 mb-3">
                             Expert Tutors
@@ -28,7 +29,7 @@ const AboutUs = () => {
                         </p>
                     </div>
                     {/* Card 2 */}
-                    <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <div className="bg-white rounded-lg shadow-lg p-6 text-center transform transition duration-300 hover:scale-105">
                         <FaGlobe className="text-purple-500 w-16 h-16 mx-auto mb-4" />
                         <h3 className="text-2xl font-bold text-gray-800 mb-3">
                             Global Reach
@@ -39,7 +40,7 @@ const AboutUs = () => {
                         </p>
                     </div>
                     {/* Card 3 */}
-                    <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+                    <div className="bg-white rounded-lg shadow-lg p-6 text-center transform transition duration-300 hover:scale-105">
                         <FaUsers className="text-purple-500 w-16 h-16 mx-auto mb-4" />
                         <h3 className="text-2xl font-bold text-gray-800 mb-3">
                             Growing Community
@@ -52,6 +53,7 @@ const AboutUs = () => {
                 </div>
             </div>
         </div>
+     
     );
 };
 
