@@ -4,7 +4,7 @@ import { MdScheduleSend } from "react-icons/md";
 
 const Features = () => {
     return (
-        <section className="py-20 px-6 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400">
+        <section className="py-12 px-6 lg:px-20 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400">
         <h2 className="text-4xl text-center font-extrabold text-white mb-12">
             Why Choose Us?
         </h2>

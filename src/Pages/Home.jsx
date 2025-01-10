@@ -5,6 +5,7 @@ import Category from '../Components/Category/Category';
 import Features from '../Components/Features/Features';
 import HowItWorks from '../Components/HowITWorks/HowItWorks';
 import { Helmet } from 'react-helmet-async';
+import AboutUs from '../Components/AboutUs/AboutUs';
 
 const Home = () => {
     return (
@@ -26,6 +27,9 @@ const Home = () => {
             </section>
             <section>
                 <HowItWorks></HowItWorks>
+            </section>
+            <section>
+                <AboutUs></AboutUs>
             </section>
         </div>
     );

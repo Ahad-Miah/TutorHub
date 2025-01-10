@@ -24,9 +24,9 @@ const languages = [
 ];
 const Category = () => {
     return (
-        <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-16">
-            <div className="max-w-7xl mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center text-white mb-12">
+        <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-8">
+            <div className="max-w-7xl mx-auto px-10">
+                <h2 className="text-4xl font-bold text-center text-white mb-10">
                     Explore Languages
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

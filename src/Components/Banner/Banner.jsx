@@ -16,16 +16,18 @@ const Banner = () => {
             navigation
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            className="h-[80vh] md:h-[80vh] w-full"
+            className="h-[80vh] md:h-[60%] w-full"
         >
             {/* Slide 1 */}
             <SwiperSlide>
-                <div className="relative h-full">
-                    <img
+                <div className="relative h-[360px]">
+                   <div className='h-[360px]'>
+                   <img
                         src={b1}
                         alt="Slide 1"
-                        className="w-full h-full object-cover"
+                        className="h-full w-full object-cover"
                     />
+                   </div>
                     <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center text-white px-4">
                         <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
                             Learn Anytime, Anywhere
@@ -42,12 +44,14 @@ const Banner = () => {
 
             {/* Slide 2 */}
             <SwiperSlide>
-                <div className="relative h-full">
-                    <img
+                <div className="relative h-[360px]">
+                <div className='h-[360px]'>
+                   <img
                         src={b2}
                         alt="Slide 2"
                         className="w-full h-full object-cover"
                     />
+                   </div>
                     <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center text-white px-4">
                         <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
                             Empower Your Future
@@ -64,12 +68,14 @@ const Banner = () => {
 
             {/* Slide 3 */}
             <SwiperSlide>
-                <div className="relative h-full">
-                    <img
+                <div className="relative h-[360px]">
+                <div className='h-[360px]'>
+                   <img
                         src={b3}
                         alt="Slide 3"
                         className="w-full h-full object-cover"
                     />
+                   </div>
                     <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center text-white px-4">
                         <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
                             Join the Learning Revolution

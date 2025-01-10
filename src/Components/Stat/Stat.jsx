@@ -32,7 +32,7 @@ const Stat = () => {
     return (
         <ScrollTrigger onEnter={()=>setCounterOn(true)} onExit={()=>setCounterOn(false)}>
             <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white py-8">
-                <div className="max-w-7xl mx-auto px-3">
+                <div className="max-w-7xl mx-auto px-6 md:px-10">
                     <h2 className="text-4xl font-bold text-center mb-6">Our Achievements</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* Tutors Count */}

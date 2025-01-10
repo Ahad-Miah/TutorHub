@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 
 const HowItWorks = () => {
     return (
-        <section className="relative py-20 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white">
-        <div className="container mx-auto px-6">
+        <section className="relative py-12 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white">
+        <div className="container mx-auto px-8">
           <h2 className="text-4xl font-extrabold text-center mb-12">
             How It Works
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 relative">
             {/* Step 1 */}
             <Link to='/login'>
-            <div className="bg-white text-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
+            <div className="bg-white items flex flex-col justify-center text-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl h-[300px] transform transition duration-300 hover:-translate-y-2">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full mb-6 mx-auto">
                 <IoIosLogIn  className='h-8 w-8' />
               </div>
@@ -30,7 +30,7 @@ const HowItWorks = () => {
             
             {/* Step 2 */}
             <Link to="/findTutors/all">
-            <div className="bg-white text-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
+            <div className="bg-white flex flex-col justify-center h-[300px] text-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full mb-6 mx-auto">
                 <ImFinder className='h-8 w-8' />
               </div>
@@ -45,7 +45,7 @@ const HowItWorks = () => {
             </Link>
             {/* Step 3 */}
             <Link to="/findTutors/all">
-            <div className="bg-white text-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
+            <div className="bg-white flex flex-col justify-center h-[300px] text-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full mb-6 mx-auto">
                 <MdStart className='h-8 w-8' />
               </div>
