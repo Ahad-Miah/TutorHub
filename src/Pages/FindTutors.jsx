@@ -35,14 +35,15 @@ const FindTutors = () => {
   const { language } = useParams();
   const [tutors, setTutors] = useState();
   const [search, setSearch] = useState('');
+  const [sort,setSort]=useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getTutors()
-  }, [language, search, loading])
+  }, [language, search, loading,sort])
 
   const getTutors = async () => {
-    const { data } = await axios.get(`${import.meta.env.VITE_apiUrl}tutorials?language=${language}&search=${search}`)
+    const { data } = await axios.get(`${import.meta.env.VITE_apiUrl}tutorials?language=${language}&search=${search}&sort=${sort}`)
     setTutors(data);
     setLoading(false);
   }
@@ -106,8 +107,9 @@ const FindTutors = () => {
 
     )
   }
+  console.log(sort);
   return (
-    <div className="px-6 lg:px-12 min-h-screen mb-12">
+    <div className="px-6 lg:px-12 min-h-screen mb-12 mt-6">
       <Helmet>
         <title>Find Tutors || TutorHub</title>
       </Helmet>
@@ -116,50 +118,58 @@ const FindTutors = () => {
         <h2 className="text-3xl font-bold text-center">
           Find a Tutor
         </h2>
+        <div className='flex gap-4'>
         <input
           type="text"
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search tutors"
           className="input  input-bordered input-primary w-full max-w-xs" />
+          <select onChange={(e)=>setSort(e.target.value)} className="select border-pink-500 w-full max-w-xs">
+            <option disabled selected>Sort by Price</option>
+            <option value={"assending"}>Low to high</option>
+            <option value={"desending"}>High to low</option>
+          </select>
+        </div>
+       
       </div>
-    {
-       (tutors?.length === 0)? 
-        <div className="p-6 flex flex-col justify-center items-center">
-          <h1 className='text-3xl font-bold text-center mb-8'>No Tutors in this Language</h1>
-          <Link to="/">
-            <button className='btn animate-bounce text-black'>Home</button>
-          </Link>
-        </div>:<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
-        {tutors?.map((tutor) => (
-          <div
-            key={tutor.id}
-            className=" bg-base-100 h-[420px] rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300  border-t-4 border-purple-500 border-b-2"
-          >
-            <div className='w-full h-40 p-2'>
-              <img
-                src={tutor.image}
-                alt={tutor.name}
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </div>
-            <div className="px-6">
-              <h3 className="text-xl font-semibold mb-1">
-                {tutor.name}
-              </h3>
-              <p className="text-lg  mb-1">Language: {tutor.language}</p>
-              <p className="text-lg  mb-1">Review: {tutor.review}</p>
-              <p className=" text-sm mb-2">{tutor.description.slice(0, 50)}....</p>
-              <div className="badge badge-secondary mb-4">Price:$200</div>
-              <Link to={`/details/${tutor._id}`}>
-                <button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
-                  View Details
-                </button>
-              </Link>
-            </div>
+      {
+        (tutors?.length === 0) ?
+          <div className="p-6 flex flex-col justify-center items-center">
+            <h1 className='text-3xl font-bold text-center mb-8'>No Tutors in this Language</h1>
+            <Link to="/">
+              <button className='btn animate-bounce text-black'>Home</button>
+            </Link>
+          </div> : <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
+            {tutors?.map((tutor) => (
+              <div
+                key={tutor.id}
+                className=" bg-base-100 h-[420px] rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300  border-t-4 border-purple-500 border-b-2"
+              >
+                <div className='w-full h-40 p-2'>
+                  <img
+                    src={tutor.image}
+                    alt={tutor.name}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+                <div className="px-6">
+                  <h3 className="text-xl font-semibold mb-1">
+                    {tutor.name}
+                  </h3>
+                  <p className="text-lg  mb-1">Language: {tutor.language}</p>
+                  <p className="text-lg  mb-1">Review: {tutor.review}</p>
+                  <p className=" text-sm mb-2">{tutor.description.slice(0, 50)}....</p>
+                  <div className="badge badge-secondary mb-4">Price:${tutor.price}</div>
+                  <Link to={`/details/${tutor._id}`}>
+                    <button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
+                      View Details
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>   
-    }  
+      }
     </div>
   );
 };

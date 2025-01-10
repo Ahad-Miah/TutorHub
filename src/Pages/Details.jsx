@@ -98,7 +98,7 @@ const Details = () => {
                 Review: {tutor.review}
               </p>
   
-              <button onClick={handleBooking} className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200">
+              <button onClick={handleBooking} className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200">
                 Book Now
               </button>
             </div>

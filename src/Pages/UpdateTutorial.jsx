@@ -17,7 +17,7 @@ const UpdateTutorial = () => {
         const email=form.email.value;
         const image=form.image.value;
         const language=form.language.value;
-        const price=form.price.value;
+        const price=parseInt(form.price.value);
         const description=form.description.value;
         const review=parseInt(form.review.value);
         
