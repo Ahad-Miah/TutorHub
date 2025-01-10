@@ -1,7 +1,9 @@
 import axios from 'axios';
+import Lottie from 'lottie-react';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
+import noContent from '../assets/Lottiefiles/noContent.json';
 
 // const tutors = [
 //     {
@@ -135,7 +137,9 @@ const FindTutors = () => {
       {
         (tutors?.length === 0) ?
           <div className="p-6 flex flex-col justify-center items-center">
-            <h1 className='text-3xl font-bold text-center mb-8'>No Tutors in this Language</h1>
+            <div>
+              <Lottie animationData={noContent}></Lottie>
+            </div>
             <Link to="/">
               <button className='btn animate-bounce text-black'>Home</button>
             </Link>
