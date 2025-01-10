@@ -107,7 +107,7 @@ const FindTutors = () => {
     )
   }
   return (
-    <div className="px-12 min-h-screen mb-12">
+    <div className="px-6 lg:px-12 min-h-screen mb-12">
       <Helmet>
         <title>Find Tutors || TutorHub</title>
       </Helmet>
@@ -129,7 +129,7 @@ const FindTutors = () => {
           <Link to="/">
             <button className='btn animate-bounce text-black'>Home</button>
           </Link>
-        </div>:<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-4">
+        </div>:<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4">
         {tutors?.map((tutor) => (
           <div
             key={tutor.id}
@@ -148,7 +148,7 @@ const FindTutors = () => {
               </h3>
               <p className="text-lg  mb-1">Language: {tutor.language}</p>
               <p className="text-lg  mb-1">Review: {tutor.review}</p>
-              <p className=" text-sm mb-2">{tutor.description.slice(0, 70)}....</p>
+              <p className=" text-sm mb-2">{tutor.description.slice(0, 50)}....</p>
               <div className="badge badge-secondary mb-4">Price:$200</div>
               <Link to={`/details/${tutor._id}`}>
                 <button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">

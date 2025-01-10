@@ -36,7 +36,7 @@ const Router =createBrowserRouter([
             },
             {
                 path:"details/:id",
-                element:<PrivateRoute><Details></Details></PrivateRoute>,
+                element:<Details></Details>,
                 loader: ({params})=>fetch(`${import.meta.env.VITE_apiUrl}tutorials/${params.id}`)
             },
             {

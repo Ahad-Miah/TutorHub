@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -37,6 +37,7 @@ import { Helmet } from 'react-helmet-async';
 const Details = () => {
 
     const navigate=useNavigate();
+    const location =useLocation();
   const {user}=useContext(AuthContext);
     const tutor=useLoaderData();
     const handleBooking=()=>{
@@ -48,6 +49,11 @@ const Details = () => {
         price:tutor.price,
         tutorEmail:tutor.email,
         email:user?.email
+      }
+      if (!user) {
+        return navigate('/login', {
+          state:  location.pathname ,
+        });
       }
       if(info.tutorEmail==info.email){
         return toast.error("Tutors can't booked his own tutorial");
