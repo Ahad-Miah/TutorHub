@@ -46,15 +46,6 @@ const FindTutors = () => {
     setTutors(data);
     setLoading(false);
   }
-  if (tutors?.length === 0) {
-    return <div className="p-6 min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 flex flex-col justify-center items-center">
-      <h1 className='text-3xl font-bold text-center text-white mb-8'>No Tutors in this Language</h1>
-      <Link to="/">
-        <button className='btn bg-white animate-bounce text-black'>Home</button>
-      </Link>
-    </div>
-  }
-
   if (loading) {
     return (
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-3'>
@@ -116,7 +107,7 @@ const FindTutors = () => {
     )
   }
   return (
-    <div className="p-6 min-h-screen ">
+    <div className="px-12 min-h-screen mb-12">
       <Helmet>
         <title>Find Tutors || TutorHub</title>
       </Helmet>
@@ -131,38 +122,44 @@ const FindTutors = () => {
           placeholder="Search tutors"
           className="input  input-bordered input-primary w-full max-w-xs" />
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-3">
+    {
+       (tutors?.length === 0)? 
+        <div className="p-6 flex flex-col justify-center items-center">
+          <h1 className='text-3xl font-bold text-center mb-8'>No Tutors in this Language</h1>
+          <Link to="/">
+            <button className='btn animate-bounce text-black'>Home</button>
+          </Link>
+        </div>:<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 lg:grid-cols-4">
         {tutors?.map((tutor) => (
           <div
             key={tutor.id}
-            className=" bg-base-100 h-[500px] rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300  border-t-4 border-purple-500 border-b-2"
+            className=" bg-base-100 h-[420px] rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300  border-t-4 border-purple-500 border-b-2"
           >
-            <div className='w-full h-52 p-2'>
+            <div className='w-full h-40 p-2'>
               <img
                 src={tutor.image}
                 alt={tutor.name}
                 className="w-full h-full object-cover rounded-lg"
               />
             </div>
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold mb-2">
+            <div className="px-6">
+              <h3 className="text-xl font-semibold mb-1">
                 {tutor.name}
               </h3>
-              <p className="text-lg  mb-2">Language: {tutor.language}</p>
-              <p className="text-lg  mb-2">Review: {tutor.review}</p>
-              <p className=" text-sm mb-4">{tutor.description.slice(0, 90)}</p>
+              <p className="text-lg  mb-1">Language: {tutor.language}</p>
+              <p className="text-lg  mb-1">Review: {tutor.review}</p>
+              <p className=" text-sm mb-2">{tutor.description.slice(0, 70)}....</p>
               <div className="badge badge-secondary mb-4">Price:$200</div>
               <Link to={`/details/${tutor._id}`}>
-                <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
+                <button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200">
                   View Details
                 </button>
               </Link>
-
             </div>
           </div>
         ))}
-      </div>
+      </div>   
+    }  
     </div>
   );
 };
