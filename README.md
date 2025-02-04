@@ -2,6 +2,9 @@
 
 This project is a user-friendly platform that allows users to browse, book, and manage tutorials across various languages. It is designed to provide a seamless experience for both learners and tutors.
 
+![TutorHub](https://i.ibb.co.com/F4wsRYZB/tutor-hub.png)
+
+
 ## Purpose
 
 The purpose of this project is to connect users with qualified tutors offering tutorials in diverse languages. Users can book tutorials, manage their bookings, and review their selected tutors, ensuring a comprehensive learning experience.
