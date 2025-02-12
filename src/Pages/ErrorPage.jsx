@@ -12,7 +12,7 @@ const ErrorPage = () => {
         </Helmet>
         <div className="text-center">
         
-        <div className='w-[70%] md:w-[50%] mx-auto'>
+        <div className='w-[70%] md:w-[50%] lg:w-[70%]  mx-auto'>
             <Lottie animationData={errorAnimation}></Lottie>
         </div>
               <p className="mt-4 text-lg text-white/80 sm:text-xl px-9">
