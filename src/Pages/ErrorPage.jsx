@@ -12,8 +12,10 @@ const ErrorPage = () => {
         </Helmet>
         <div className="text-center">
         
+        <div className='w-[70%] md:w-[50%] mx-auto'>
             <Lottie animationData={errorAnimation}></Lottie>
-              <p className="mt-4 text-lg text-white/80 sm:text-xl">
+        </div>
+              <p className="mt-4 text-lg text-white/80 sm:text-xl px-9">
             The page you’re looking for doesn’t exist or has been moved.
           </p>
           <div className="mt-6">
