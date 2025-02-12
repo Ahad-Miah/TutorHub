@@ -18,6 +18,7 @@ import Stat from "../Components/Stat/Stat";
 import Features from "../Components/Features/Features";
 import Banner from "../Components/Banner/Banner";
 import HowItWorks from "../Components/HowITWorks/HowItWorks";
+import ContactMe from "../Pages/ContactMe";
 
 const Router =createBrowserRouter([
     
@@ -33,6 +34,10 @@ const Router =createBrowserRouter([
             {
                 path:"findTutors/:language",
                 element:<FindTutors></FindTutors>
+            },
+            {
+                path:"contactMe",
+                element:<ContactMe></ContactMe>
             },
             {
                 path:"details/:id",
