@@ -17,7 +17,7 @@ const Banner = () => {
             navigation
             pagination={{ clickable: true }}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
-            className="h-[80vh] md:h-[60%] w-full"
+            className=" md:h-[60%] w-full"
         >
             {/* Slide 1 */}
             <SwiperSlide>
