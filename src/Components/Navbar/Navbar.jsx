@@ -80,7 +80,7 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to="/" className="text-lg text-white hover:text-yellow-400">Home</NavLink></li>
         <li><NavLink to="/findTutors/all" className="text-lg text-white hover:text-yellow-400">Find Tutors</NavLink></li>
-        <li><NavLink to="/contactMe" className="text-lg text-white hover:text-yellow-400">Contact</NavLink></li>
+        <li><NavLink to="/contactUs" className="text-lg text-white hover:text-yellow-400">Contact</NavLink></li>
         {
             user && <>
                 <div className='lg:hidden items-center justify-center text-center *:mb-4'>

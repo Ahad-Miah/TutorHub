@@ -36,7 +36,7 @@ const Router =createBrowserRouter([
                 element:<FindTutors></FindTutors>
             },
             {
-                path:"contactMe",
+                path:"contactUs",
                 element:<ContactMe></ContactMe>
             },
             {
